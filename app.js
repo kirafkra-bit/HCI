@@ -69,8 +69,8 @@ let tasks = [
   { id:1, title:'HCI FINAL EXAM', subject:'HCI01', due:'2025-03-04', priority:'high',   done:true  },
   { id:2, title:'PT1 FINALS',  subject:'PT01', due:'2025-03-04', priority:'high',   done:false },
   { id:3, title:'HCI STUDENT MANAGEMENT SYSTEM FINAL PROJECT',   subject:'HCI01', due:'2025-03-06', priority:'medium', done:false },
-  { id:4, title:'MS01 FINALS ',      subject:'MS01',   due:'2025-03-08', priority:'medium', done:false },
-  { id:5, title:'ICCT HACKACTHON PREP',    subject:'N/A', due:'2025-03-10', priority:'low',    done:false },
+  { id:4, title:'MS01 FINALS',      subject:'MS01',   due:'2025-03-08', priority:'medium', done:false },
+  { id:5, title:'ICCT HACKATHON PREP',    subject:'N/A', due:'2025-03-10', priority:'low',    done:false },
   { id:6, title:'ICCT SKOLARIS ORIENTATION', subject:'N/A', due:'2025-03-12', priority:'medium', done:false },
 ];
 let taskFilter = 'all', nextId = 7;
@@ -82,7 +82,6 @@ function fmtDate(d) {
   return d ? new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric' }) : '—';
 }
 
-// task rendering 
 function renderTasks() {
   const q = (document.getElementById('taskSearch')?.value || '').toLowerCase();
   const list = document.getElementById('taskList');
@@ -96,7 +95,7 @@ function renderTasks() {
       <div class="task-check ${t.done?'done':''}" onclick="toggleTask(${t.id})" role="checkbox" aria-checked="${t.done}" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')toggleTask(${t.id})">
         ${t.done ? `<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg>` : ''}
       </div>
-      <div><div class="task-row-title" style="${t.done?'text-decoration:line-through;color:var(--muted)':''}">${t.title}</div><div class="task-row-sub">${t.subject}</div></div>
+      <div style="min-width:0"><div class="task-row-title" style="${t.done?'text-decoration:line-through;color:var(--muted)':''}">${t.title}</div><div class="task-row-sub">${t.subject}</div></div>
       <div style="font-size:.78rem;color:var(--muted);font-family:var(--font-display)">${t.subject}</div>
       <div style="font-size:.78rem;font-family:var(--font-display);font-weight:600">${fmtDate(t.due)}</div>
       <div style="display:flex;align-items:center;gap:6px">
@@ -144,7 +143,7 @@ function toast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// notif
+// notifications
 function dismissNotif(el) {
   const item = el.closest('.notif-item');
   Object.assign(item.style, { transition:'all .28s ease', opacity:'0', transform:'translateX(18px)' });
@@ -160,14 +159,14 @@ function setNotifFilter(f, el) {
   document.querySelectorAll('.notif-item').forEach(i => i.style.display = (f==='all'||i.dataset.type===f) ? 'flex' : 'none');
 }
 
-//  faq
+// faq
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item'), open = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(f => { f.classList.remove('open'); f.querySelector('.faq-q')?.setAttribute('aria-expanded','false'); });
   if (!open) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
 }
 
-// profile 
+// profile
 function saveProfile() { const m=document.getElementById('profileSuccess'); if(m){m.classList.add('show'); setTimeout(()=>m.classList.remove('show'),3500);} }
 function submitContact() {
   const name=document.getElementById('contactName').value.trim(), email=document.getElementById('contactEmail').value.trim(), msg=document.getElementById('contactMsg').value.trim();

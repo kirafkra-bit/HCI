@@ -6,10 +6,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Responsive inline-style overrides -->
+<style>
+  /* override inline grid styles on mobile */
+  @media(max-width:960px) {
+    .dash-right-col  { display:flex !important; flex-direction:column !important; }
+    .sched-sidebar   { display:flex !important; flex-direction:column !important; width:100% !important; }
+    .help-two-col    { display:block !important; }
+    .help-two-col > div { margin-bottom:28px; }
+    .help-two-col > div:last-child { margin-bottom:0; }
+  }
+  @media(max-width:600px) {
+    .sched-layout    { display:flex !important; flex-direction:column !important; gap:14px !important; }
+    .profile-sidebar { display:flex !important; flex-direction:column !important; }
+  }
+</style>
 </head>
 <body>
 
-<!-- SVG icon -->
+<!-- SVG icons -->
 <svg style="display:none">
   <symbol id="ico-brand"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
   <symbol id="ico-home"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
@@ -39,14 +54,14 @@
 
 <div class="app-shell">
 
-<!-- siuddebar naka js   -->
+<!-- Sidebar -->
 <aside class="sidebar">
   <div class="sb-brand" onclick="navigate('home')" tabindex="0" onkeydown="if(event.key==='Enter')navigate('home')">
     <div class="sb-brand-icon"><svg width="20" height="20"><use href="#ico-brand"/></svg></div>
     <div><div class="sb-brand-name">HCI</div><div class="sb-brand-tag">Student System</div></div>
   </div>
   <div class="sb-user" onclick="navigate('profile')" tabindex="0" onkeydown="if(event.key==='Enter')navigate('profile')">
-    <div class="sb-avatar">AM</div>
+    <div class="sb-avatar">JF</div>
     <div><div class="sb-user-name">James Franco</div><div class="sb-user-role">Year 3 · IT Major</div></div>
   </div>
   <div class="sb-section-label">Menu</div>
@@ -62,9 +77,9 @@
   </div>
 </aside>
 
-<!-- mmobile vesrsion topbar -->
+<!-- Mobile topbar -->
 <header class="mobile-topbar">
-  <div class="nav-logo" onclick="navigate('home')"><span class="nav-logo-dot"></span>PŌLARIS</div>
+  <div class="nav-logo" onclick="navigate('home')"><span class="nav-logo-dot"></span>HCI</div>
   <div style="display:flex;align-items:center;gap:6px">
     <button style="background:var(--cream);border:none;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)" onclick="toggleTheme()">
       <svg width="16" height="16"><use href="#ico-moon"/></svg>
@@ -76,14 +91,14 @@
 
 <div class="main-content">
 
-<!-- home page  -->
+<!-- HOME PAGE -->
 <div class="page active" id="page-home">
   <div class="container">
     <section class="home-hero">
       <div class="hero-bg-shape"></div>
       <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Student Productivity Platform</div>
-      <h1 class="display hero-title">“Education is the kindling of a flame, not the filling of a vessel.” <br><em>-Socrates</em></h1>
-      <p class="hero-sub">This System organize your tasks, schedule, and projects into a clean, focused workspace — built for students at ICCT COLLEGES.</p>
+      <h1 class="display hero-title">"Education is the kindling of a flame, not the filling of a vessel." <br><em>-Socrates</em></h1>
+      <p class="hero-sub">This System organizes your tasks, schedule, and projects into a clean, focused workspace — built for students at ICCT COLLEGES.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="navigate('dashboard')">Get Started →</button>
         <button class="btn btn-outline" onclick="navigate('help')">Learn More</button>
@@ -111,13 +126,13 @@
     </section>
   </div>
   <footer><div class="container"><div class="footer-inner">
-    <div class="nav-logo" style="gap:7px;font-size:1rem"><span class="nav-logo-dot"></span>PŌLARIS</div>
+    <div class="nav-logo" style="gap:7px;font-size:1rem"><span class="nav-logo-dot"></span>HCI</div>
     <p class="footer-copy">© 2025 HCI Student System. Designed for learners.</p>
     <div class="footer-links"><a href="#" onclick="navigate('help')">Help</a><a href="#" onclick="navigate('profile')">Profile</a></div>
   </div></div></footer>
 </div>
 
-<!-- dashboard -->
+<!-- DASHBOARD -->
 <div class="page" id="page-dashboard"><div class="container">
   <div class="dash-header"><div class="dash-greeting">Good morning, Franco 👋</div><div class="dash-title heading">Your Dashboard</div></div>
   <div class="kpi-grid">
@@ -129,12 +144,12 @@
   <div class="dash-grid">
     <div style="display:flex;flex-direction:column;gap:20px">
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div class="heading" style="font-size:.98rem">Upcoming Tasks</div><button class="btn btn-outline btn-sm" onclick="navigate('tasks')">View all</button></div>
-        <div class="task-item"><div class="task-check done" tabindex="0"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div><div style="flex:1"><div class="task-text done">Calculus Problem Set</div><div style="font-size:.72rem;color:var(--muted)">MATH 201</div></div><span class="chip chip-green">Done</span></div>
-        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">History Essay Draft</div><div style="font-size:.72rem;color:var(--muted)">HIST 110</div></div><span class="task-due">Today</span><span class="chip chip-orange">High</span></div>
-        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">Physics Lab Report</div><div style="font-size:.72rem;color:var(--muted)">PHYS 301</div></div><span class="task-due">Mar 6</span><span class="chip chip-blue">Med</span></div>
-        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">CS Assignment 3</div><div style="font-size:.72rem;color:var(--muted)">CS 401</div></div><span class="task-due">Mar 8</span><span class="chip chip-blue">Med</span></div>
-        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">Spanish Oral Prep</div><div style="font-size:.72rem;color:var(--muted)">SPAN 202</div></div><span class="task-due">Mar 10</span><span class="chip chip-gold">Low</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px"><div class="heading" style="font-size:.98rem">Upcoming Tasks</div><button class="btn btn-outline btn-sm" onclick="navigate('tasks')">View all</button></div>
+        <div class="task-item"><div class="task-check done" tabindex="0"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div><div style="flex:1;min-width:0"><div class="task-text done">Calculus Problem Set</div><div style="font-size:.72rem;color:var(--muted)">MATH 201</div></div><span class="chip chip-green">Done</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1;min-width:0"><div class="task-text">History Essay Draft</div><div style="font-size:.72rem;color:var(--muted)">HIST 110</div></div><span class="task-due">Today</span><span class="chip chip-orange">High</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1;min-width:0"><div class="task-text">Physics Lab Report</div><div style="font-size:.72rem;color:var(--muted)">PHYS 301</div></div><span class="task-due">Mar 6</span><span class="chip chip-blue">Med</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1;min-width:0"><div class="task-text">CS Assignment 3</div><div style="font-size:.72rem;color:var(--muted)">CS 401</div></div><span class="task-due">Mar 8</span><span class="chip chip-blue">Med</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1;min-width:0"><div class="task-text">Spanish Oral Prep</div><div style="font-size:.72rem;color:var(--muted)">SPAN 202</div></div><span class="task-due">Mar 10</span><span class="chip chip-gold">Low</span></div>
       </div>
       <div class="card">
         <div class="heading" style="font-size:.98rem;margin-bottom:18px">Subject Progress</div>
@@ -145,16 +160,16 @@
         <div class="subject-bar"><div class="subject-name">OLLITE</div><div class="progress-track" style="flex:1"><div class="progress-fill blue" style="width:54%"></div></div><div class="subject-pct">54%</div></div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:20px">
+    <div class="dash-right-col" style="display:flex;flex-direction:column;gap:20px">
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><div class="heading" style="font-size:.98rem">Today's Classes</div><button class="btn btn-outline btn-sm" onclick="navigate('schedule')">Full view</button></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px"><div class="heading" style="font-size:.98rem">Today's Classes</div><button class="btn btn-outline btn-sm" onclick="navigate('schedule')">Full view</button></div>
         <div class="schedule-item"><div class="sched-time">9:00</div><div class="sched-pill" style="background:var(--accent2)"></div><div class="sched-content"><div class="sched-title">Calculus II</div><div class="sched-room">Room B202 · 1h 30m</div></div></div>
         <div class="schedule-item"><div class="sched-time">11:00</div><div class="sched-pill" style="background:var(--accent)"></div><div class="sched-content"><div class="sched-title">World History</div><div class="sched-room">Room A101 · 1h</div></div></div>
         <div class="schedule-item"><div class="sched-time">14:00</div><div class="sched-pill" style="background:var(--gold)"></div><div class="sched-content"><div class="sched-title">Physics Lab</div><div class="sched-room">Lab 3 · 2h</div></div></div>
         <div class="schedule-item"><div class="sched-time">16:30</div><div class="sched-pill" style="background:#2ab464"></div><div class="sched-content"><div class="sched-title">CS Algorithms</div><div class="sched-room">Online · 1h</div></div></div>
       </div>
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><div class="heading" style="font-size:.98rem">Alerts</div><button class="btn btn-outline btn-sm" onclick="navigate('notifications')">View all</button></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px"><div class="heading" style="font-size:.98rem">Alerts</div><button class="btn btn-outline btn-sm" onclick="navigate('notifications')">View all</button></div>
         <div class="notif-item" style="border-radius:10px;padding:11px 13px;margin-bottom:7px"><div class="notif-avatar fi-orange"><svg width="18" height="18"><use href="#ico-warn"/></svg></div><div class="notif-body"><div class="notif-title" style="font-size:.82rem">Essay Due in 6 Hours</div><div class="notif-sub" style="font-size:.74rem">History Essay Draft — today at 11:59 PM</div></div><div class="notif-unread-dot"></div></div>
         <div class="notif-item" style="border-radius:10px;padding:11px 13px;opacity:.68"><div class="notif-avatar fi-green"><svg width="18" height="18"><use href="#ico-grade"/></svg></div><div class="notif-body"><div class="notif-title" style="font-size:.82rem">Grade Posted: Calculus</div><div class="notif-sub" style="font-size:.74rem">Midterm result: 91/100 — Excellent!</div></div></div>
       </div>
@@ -162,7 +177,7 @@
   </div>
 </div></div>
 
-<!-- taskss -->
+<!-- TASKS -->
 <div class="page" id="page-tasks"><div class="container task-manager-layout">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px">
     <div><h1 class="heading" style="font-size:1.75rem;letter-spacing:-.03em">Task Manager</h1><p style="font-size:.83rem;color:var(--muted);margin-top:4px">Manage assignments and stay ahead of deadlines.</p></div>
@@ -192,50 +207,53 @@
   <div class="success-toast" id="toast"><div class="toast-check"><svg width="11" height="11"><use href="#ico-check"/></svg></div><span id="toastMsg">Done!</span></div>
 </div></div>
 
-<!-- schedule -->
+<!-- SCHEDULE -->
 <div class="page" id="page-schedule"><div class="container schedule-page">
   <div class="cal-nav">
     <div><div class="label">Weekly View</div><div class="cal-title">March 2025</div></div>
-    <div style="display:flex;gap:7px"><button class="btn btn-outline btn-sm">← Prev</button><button class="btn btn-outline btn-sm" style="background:var(--cream)">Today</button><button class="btn btn-outline btn-sm">Next →</button></div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn btn-outline btn-sm">← Prev</button><button class="btn btn-outline btn-sm" style="background:var(--cream)">Today</button><button class="btn btn-outline btn-sm">Next →</button></div>
     <div class="view-switch"><div class="view-btn active" tabindex="0">Week</div><div class="view-btn" tabindex="0">Day</div><div class="view-btn" tabindex="0">Month</div></div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 210px;gap:18px;align-items:start">
-    <div class="week-grid">
-      <div class="week-col-head"></div>
-      <div class="week-col-head"><div class="week-day">Mon</div><div class="week-date">3</div></div>
-      <div class="week-col-head"><div class="week-day">Tue</div><div class="week-date today">4</div></div>
-      <div class="week-col-head"><div class="week-day">Wed</div><div class="week-date">5</div></div>
-      <div class="week-col-head"><div class="week-day">Thu</div><div class="week-date">6</div></div>
-      <div class="week-col-head"><div class="week-day">Fri</div><div class="week-date">7</div></div>
-      <div class="time-col"><div class="time-slot"><span class="time-label">8 AM</span></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discete Math 01</div><div class="cal-event-time">8:00–9:30 · B202</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Human Computer Interaction 01</div><div class="cal-event-time">8:00–9:30</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="time-col"><div class="time-slot"><span class="time-label">9 AM</span></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">CPPROG 04</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discreme Math 01</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Platform Technologies</div><div class="cal-event-time">9:00–10:30</div></div></div></div>
-      <div class="time-col"><div class="time-slot"><span class="time-label">10 AM</span></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Data Structure And Algorithms</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">OLLITE 01</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
-      <div class="time-col"><div class="time-slot"><span class="time-label">11 AM</span></div></div>
-      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-purple" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Study Group</div><div class="cal-event-time">11:00–12:30</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
-      <div class="time-col"><div class="time-slot"><span class="time-label">2 PM</span></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com lab 216</div><div class="cal-event-time">14:00–16:00 · Lab 3</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
-      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com lab 216</div><div class="cal-event-time">14:00–16:00</div></div></div></div>
-      <div class="day-col"><div class="day-cell"></div></div>
+  <!-- Schedule layout: responsive via class -->
+  <div class="sched-layout" style="display:grid;grid-template-columns:1fr 210px;gap:18px;align-items:start">
+    <div style="overflow-x:auto">
+      <div class="week-grid" style="min-width:320px">
+        <div class="week-col-head"></div>
+        <div class="week-col-head"><div class="week-day">Mon</div><div class="week-date">3</div></div>
+        <div class="week-col-head"><div class="week-day">Tue</div><div class="week-date today">4</div></div>
+        <div class="week-col-head"><div class="week-day">Wed</div><div class="week-date">5</div></div>
+        <div class="week-col-head"><div class="week-day">Thu</div><div class="week-date">6</div></div>
+        <div class="week-col-head"><div class="week-day">Fri</div><div class="week-date">7</div></div>
+        <div class="time-col"><div class="time-slot"><span class="time-label">8 AM</span></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discrete Math 01</div><div class="cal-event-time">8:00–9:30 · B202</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">HCI 01</div><div class="cal-event-time">8:00–9:30</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="time-col"><div class="time-slot"><span class="time-label">9 AM</span></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">CPPROG 04</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discrete Math 01</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Platform Tech</div><div class="cal-event-time">9:00–10:30</div></div></div></div>
+        <div class="time-col"><div class="time-slot"><span class="time-label">10 AM</span></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Data Structures</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">OLLITE 01</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+        <div class="time-col"><div class="time-slot"><span class="time-label">11 AM</span></div></div>
+        <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-purple" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Study Group</div><div class="cal-event-time">11:00–12:30</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+        <div class="time-col"><div class="time-slot"><span class="time-label">2 PM</span></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com Lab 216</div><div class="cal-event-time">14:00–16:00 · Lab 3</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+        <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com Lab 216</div><div class="cal-event-time">14:00–16:00</div></div></div></div>
+        <div class="day-col"><div class="day-cell"></div></div>
+      </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="sched-sidebar" style="display:flex;flex-direction:column;gap:14px">
       <div class="card">
         <div class="heading" style="font-size:.92rem;margin-bottom:12px">March 2025</div>
         <div class="mini-calendar">
@@ -259,11 +277,11 @@
   </div>
 </div></div>
 
-<!-- notifss-->
+<!-- NOTIFICATIONS -->
 <div class="page" id="page-notifications"><div class="container notif-page">
   <div class="notif-toolbar">
-    <div style="display:flex;align-items:center;gap:10px"><h1 class="heading" style="font-size:1.75rem;letter-spacing:-.03em">Notifications</h1><div class="notif-count-badge" id="unreadCount">3 unread</div></div>
-    <div style="display:flex;gap:7px"><button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark all read</button><button class="btn btn-outline btn-sm" onclick="clearNotifs()">Clear all</button></div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h1 class="heading" style="font-size:1.75rem;letter-spacing:-.03em">Notifications</h1><div class="notif-count-badge" id="unreadCount">3 unread</div></div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark all read</button><button class="btn btn-outline btn-sm" onclick="clearNotifs()">Clear all</button></div>
   </div>
   <div class="filter-tabs" style="margin-bottom:22px">
     <div class="filter-tab active" onclick="setNotifFilter('all',this)" tabindex="0">All</div>
@@ -281,11 +299,11 @@
   <div class="empty-notif" id="emptyNotif" style="display:none"><div class="empty-icon">🔔</div><div class="empty-text">You're all caught up!</div></div>
 </div></div>
 
-<!-- Profile -->
+<!-- PROFILE -->
 <div class="page" id="page-profile"><div class="container profile-page">
   <div class="profile-hero">
-    <div class="avatar">AM</div>
-    <div style="flex:1"><div class="profile-name">Franco James</div><div class="profile-meta">Information technology · Year 3 · Student ID: CA202406639</div><div class="profile-badges"><span class="chip chip-green">Dean's List</span><span class="chip chip-blue">IT Major</span><span class="chip chip-gold">CSS SPARROWS</span></div></div>
+    <div class="avatar">JF</div>
+    <div style="flex:1;min-width:0"><div class="profile-name">Franco James</div><div class="profile-meta">Information Technology · Year 3 · Student ID: CA202406639</div><div class="profile-badges"><span class="chip chip-green">Dean's List</span><span class="chip chip-blue">IT Major</span><span class="chip chip-gold">CSS SPARROWS</span></div></div>
     <button class="btn btn-outline btn-sm">Edit Profile</button>
   </div>
   <div class="profile-grid">
@@ -307,7 +325,7 @@
         <div class="settings-row"><div><div class="settings-label">Compact View</div><div class="settings-hint">Show more items on screen</div></div><div class="toggle" onclick="this.classList.toggle('on')" tabindex="0"></div></div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="profile-sidebar" style="display:flex;flex-direction:column;gap:18px">
       <div class="card">
         <div class="settings-title">This Semester</div>
         <div style="display:flex;flex-direction:column;gap:14px">
@@ -327,7 +345,7 @@
   </div>
 </div></div>
 
-<!-- help-->
+<!-- HELP -->
 <div class="page" id="page-help"><div class="container help-page">
   <div class="help-hero">
     <div class="label" style="color:rgba(240,237,230,0.38);margin-bottom:9px">Support Center</div>
@@ -335,14 +353,14 @@
     <div class="help-hero-sub">Search our FAQs or reach out. We're here to help.</div>
     <div class="help-search"><svg width="16" height="16"><use href="#ico-search"/></svg><input type="text" placeholder="Search for answers…"><button class="btn btn-accent btn-sm" style="flex-shrink:0">Search</button></div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:36px">
+  <div class="help-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:36px">
     <div>
       <div class="label" style="margin-bottom:18px">Frequently Asked Questions</div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How do I add a new task?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Go to Task Manager and click "+ Add Task". Fill in name, subject, and due date, then click Save.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How do I switch to dark mode?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Click "Dark Mode" at the bottom of the sidebar, or toggle it in Profile under App Preferences.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">Can I edit or delete a task?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Yes — each task row has edit and delete buttons. A confirmation prompt prevents accidental deletion.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How are notifications managed?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Visit the Notifications page to dismiss, mark as read, or clear all. Filter by type using the tabs.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">Is PŌLARIS accessible?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Yes — full ARIA labels, keyboard navigation, and WCAG 2.1 AA color contrast throughout.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">Is HCI accessible?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Yes — full ARIA labels, keyboard navigation, and WCAG 2.1 AA color contrast throughout.</div></div>
     </div>
     <div>
       <div class="label" style="margin-bottom:18px">Send Us a Message</div>
@@ -359,7 +377,7 @@
   </div>
   <div class="label" style="margin-bottom:14px">Other Ways to Reach Us</div>
   <div class="contact-grid">
-    <div class="contact-card" tabindex="0"><div class="contact-icon"><svg width="30" height="30"><use href="#ico-mail"/></svg></div><div class="contact-title">Email Support</div><div class="contact-desc">support@polaris.edu<br>Responses within 24 hours</div></div>
+    <div class="contact-card" tabindex="0"><div class="contact-icon"><svg width="30" height="30"><use href="#ico-mail"/></svg></div><div class="contact-title">Email Support</div><div class="contact-desc">support@hci.edu<br>Responses within 24 hours</div></div>
     <div class="contact-card" tabindex="0"><div class="contact-icon"><svg width="30" height="30"><use href="#ico-chat"/></svg></div><div class="contact-title">Live Chat</div><div class="contact-desc">Available Mon–Fri<br>9 AM – 6 PM local time</div></div>
   </div>
 </div></div>
