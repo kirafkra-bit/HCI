@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HCI - Student Productivity System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SVG icon -->
+<svg style="display:none">
+  <symbol id="ico-brand"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="ico-home"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ico-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+  <symbol id="ico-tasks"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></symbol>
+  <symbol id="ico-schedule"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="ico-notif"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+  <symbol id="ico-profile"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="ico-help"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="ico-moon"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="theme-icon-path" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+  <symbol id="ico-search"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ico-check"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="ico-clock"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ico-award"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="ico-target"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="ico-book"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+  <symbol id="ico-zap"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="ico-shield"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="ico-warn"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="ico-grade"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+  <symbol id="ico-people"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+  <symbol id="ico-mail"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="ico-chat"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+  <symbol id="ico-plus"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="ico-err"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+</svg>
+
+<div class="app-shell">
+
+<!-- siuddebar naka js   -->
+<aside class="sidebar">
+  <div class="sb-brand" onclick="navigate('home')" tabindex="0" onkeydown="if(event.key==='Enter')navigate('home')">
+    <div class="sb-brand-icon"><svg width="20" height="20"><use href="#ico-brand"/></svg></div>
+    <div><div class="sb-brand-name">HCI</div><div class="sb-brand-tag">Student System</div></div>
+  </div>
+  <div class="sb-user" onclick="navigate('profile')" tabindex="0" onkeydown="if(event.key==='Enter')navigate('profile')">
+    <div class="sb-avatar">AM</div>
+    <div><div class="sb-user-name">James Franco</div><div class="sb-user-role">Year 3 · IT Major</div></div>
+  </div>
+  <div class="sb-section-label">Menu</div>
+  <nav class="sb-nav" id="sb-nav-main" role="menubar"></nav>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Account</div>
+  <nav class="sb-nav" id="sb-nav-acct" style="flex:0" role="menubar"></nav>
+  <div class="sb-bottom">
+    <button class="sb-theme-btn" onclick="toggleTheme()">
+      <div class="sb-theme-icon"><svg width="17" height="17"><use href="#ico-moon"/></svg></div>
+      <span>Dark Mode</span>
+    </button>
+  </div>
+</aside>
+
+<!-- mmobile vesrsion topbar -->
+<header class="mobile-topbar">
+  <div class="nav-logo" onclick="navigate('home')"><span class="nav-logo-dot"></span>PŌLARIS</div>
+  <div style="display:flex;align-items:center;gap:6px">
+    <button style="background:var(--cream);border:none;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)" onclick="toggleTheme()">
+      <svg width="16" height="16"><use href="#ico-moon"/></svg>
+    </button>
+    <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav"></nav>
+
+<div class="main-content">
+
+<!-- home page  -->
+<div class="page active" id="page-home">
+  <div class="container">
+    <section class="home-hero">
+      <div class="hero-bg-shape"></div>
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Student Productivity Platform</div>
+      <h1 class="display hero-title">“Education is the kindling of a flame, not the filling of a vessel.” <br><em>-Socrates</em></h1>
+      <p class="hero-sub">This System organize your tasks, schedule, and projects into a clean, focused workspace — built for students at ICCT COLLEGES.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="navigate('dashboard')">Get Started →</button>
+        <button class="btn btn-outline" onclick="navigate('help')">Learn More</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><span class="label">What's inside</span><h2 class="heading section-title">Everything you need.<br>Nothing you don't.</h2></div>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon fi-orange"><svg width="20" height="20"><use href="#ico-tasks"/></svg></div><div class="feature-title">Task Manager</div><p class="feature-desc">Create, prioritize, and track assignments with deadlines. Never miss a submission again.</p></div>
+        <div class="feature-item"><div class="feature-icon fi-blue"><svg width="20" height="20"><use href="#ico-schedule"/></svg></div><div class="feature-title">Weekly Planner</div><p class="feature-desc">Visual time-blocking across your week. See your schedule at a glance and plan with precision.</p></div>
+        <div class="feature-item"><div class="feature-icon fi-gold"><svg width="20" height="20"><use href="#ico-notif"/></svg></div><div class="feature-title">Smart Notifications</div><p class="feature-desc">Deadline reminders, grade updates, and class alerts delivered when you need them.</p></div>
+        <div class="feature-item"><div class="feature-icon fi-green"><svg width="20" height="20"><use href="#ico-dashboard"/></svg></div><div class="feature-title">Progress Dashboard</div><p class="feature-desc">At-a-glance overview of your academic progress, weekly load, and upcoming priorities.</p></div>
+        <div class="feature-item"><div class="feature-icon fi-purple"><svg width="20" height="20"><use href="#ico-target"/></svg></div><div class="feature-title">Goal Tracking</div><p class="feature-desc">Set semester goals and track your momentum with subject-level progress indicators.</p></div>
+        <div class="feature-item"><div class="feature-icon fi-ink"><svg width="20" height="20"><use href="#ico-shield"/></svg></div><div class="feature-title">Accessible by Design</div><p class="feature-desc">High contrast, keyboard nav, screen reader support, and full dark mode built in.</p></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="cta-band">
+        <div><div class="label" style="color:rgba(240,237,230,0.4);margin-bottom:10px">Start for free</div><div class="cta-band-title">Ready to take control of your academic life?</div></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-accent" onclick="navigate('dashboard')">Open Dashboard →</button>
+          <button class="btn btn-outline" style="border-color:rgba(240,237,230,0.2);color:var(--paper)" onclick="navigate('help')">See How It Works</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer><div class="container"><div class="footer-inner">
+    <div class="nav-logo" style="gap:7px;font-size:1rem"><span class="nav-logo-dot"></span>PŌLARIS</div>
+    <p class="footer-copy">© 2025 HCI Student System. Designed for learners.</p>
+    <div class="footer-links"><a href="#" onclick="navigate('help')">Help</a><a href="#" onclick="navigate('profile')">Profile</a></div>
+  </div></div></footer>
+</div>
+
+<!-- dashboard -->
+<div class="page" id="page-dashboard"><div class="container">
+  <div class="dash-header"><div class="dash-greeting">Good morning, Franco 👋</div><div class="dash-title heading">Your Dashboard</div></div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-top"><span class="label">Due Today</span><div class="kpi-icon fi-orange"><svg width="18" height="18"><use href="#ico-tasks"/></svg></div></div><div class="kpi-num">4</div><div class="kpi-sub">tasks pending</div><div class="kpi-delta delta-dn">▲ 2 from yesterday</div></div>
+    <div class="kpi-card"><div class="kpi-top"><span class="label">Completion</span><div class="kpi-icon fi-green"><svg width="18" height="18"><use href="#ico-check"/></svg></div></div><div class="kpi-num">78%</div><div class="kpi-sub">this week</div><div class="kpi-delta delta-up">▲ 12% vs last week</div></div>
+    <div class="kpi-card"><div class="kpi-top"><span class="label">Study Hours</span><div class="kpi-icon fi-blue"><svg width="18" height="18"><use href="#ico-clock"/></svg></div></div><div class="kpi-num">13.5</div><div class="kpi-sub">hrs this week</div><div class="kpi-delta delta-up">▲ On track</div></div>
+    <div class="kpi-card"><div class="kpi-top"><span class="label">Current GPA</span><div class="kpi-icon fi-gold"><svg width="18" height="18"><use href="#ico-award"/></svg></div></div><div class="kpi-num">1.75</div><div class="kpi-sub">semester average</div><div class="kpi-delta delta-up">▲ 0.2 vs last sem</div></div>
+  </div>
+  <div class="dash-grid">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div class="heading" style="font-size:.98rem">Upcoming Tasks</div><button class="btn btn-outline btn-sm" onclick="navigate('tasks')">View all</button></div>
+        <div class="task-item"><div class="task-check done" tabindex="0"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div><div style="flex:1"><div class="task-text done">Calculus Problem Set</div><div style="font-size:.72rem;color:var(--muted)">MATH 201</div></div><span class="chip chip-green">Done</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">History Essay Draft</div><div style="font-size:.72rem;color:var(--muted)">HIST 110</div></div><span class="task-due">Today</span><span class="chip chip-orange">High</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">Physics Lab Report</div><div style="font-size:.72rem;color:var(--muted)">PHYS 301</div></div><span class="task-due">Mar 6</span><span class="chip chip-blue">Med</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">CS Assignment 3</div><div style="font-size:.72rem;color:var(--muted)">CS 401</div></div><span class="task-due">Mar 8</span><span class="chip chip-blue">Med</span></div>
+        <div class="task-item"><div class="task-check" onclick="this.classList.toggle('done')" tabindex="0"></div><div style="flex:1"><div class="task-text">Spanish Oral Prep</div><div style="font-size:.72rem;color:var(--muted)">SPAN 202</div></div><span class="task-due">Mar 10</span><span class="chip chip-gold">Low</span></div>
+      </div>
+      <div class="card">
+        <div class="heading" style="font-size:.98rem;margin-bottom:18px">Subject Progress</div>
+        <div class="subject-bar"><div class="subject-name">MS01</div><div class="progress-track" style="flex:1"><div class="progress-fill" style="width:88%"></div></div><div class="subject-pct">88%</div></div>
+        <div class="subject-bar"><div class="subject-name">HCI</div><div class="progress-track" style="flex:1"><div class="progress-fill blue" style="width:65%"></div></div><div class="subject-pct">65%</div></div>
+        <div class="subject-bar"><div class="subject-name">CPPROG</div><div class="progress-track" style="flex:1"><div class="progress-fill gold" style="width:72%"></div></div><div class="subject-pct">72%</div></div>
+        <div class="subject-bar"><div class="subject-name">PT01</div><div class="progress-track" style="flex:1"><div class="progress-fill green" style="width:91%"></div></div><div class="subject-pct">91%</div></div>
+        <div class="subject-bar"><div class="subject-name">OLLITE</div><div class="progress-track" style="flex:1"><div class="progress-fill blue" style="width:54%"></div></div><div class="subject-pct">54%</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><div class="heading" style="font-size:.98rem">Today's Classes</div><button class="btn btn-outline btn-sm" onclick="navigate('schedule')">Full view</button></div>
+        <div class="schedule-item"><div class="sched-time">9:00</div><div class="sched-pill" style="background:var(--accent2)"></div><div class="sched-content"><div class="sched-title">Calculus II</div><div class="sched-room">Room B202 · 1h 30m</div></div></div>
+        <div class="schedule-item"><div class="sched-time">11:00</div><div class="sched-pill" style="background:var(--accent)"></div><div class="sched-content"><div class="sched-title">World History</div><div class="sched-room">Room A101 · 1h</div></div></div>
+        <div class="schedule-item"><div class="sched-time">14:00</div><div class="sched-pill" style="background:var(--gold)"></div><div class="sched-content"><div class="sched-title">Physics Lab</div><div class="sched-room">Lab 3 · 2h</div></div></div>
+        <div class="schedule-item"><div class="sched-time">16:30</div><div class="sched-pill" style="background:#2ab464"></div><div class="sched-content"><div class="sched-title">CS Algorithms</div><div class="sched-room">Online · 1h</div></div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><div class="heading" style="font-size:.98rem">Alerts</div><button class="btn btn-outline btn-sm" onclick="navigate('notifications')">View all</button></div>
+        <div class="notif-item" style="border-radius:10px;padding:11px 13px;margin-bottom:7px"><div class="notif-avatar fi-orange"><svg width="18" height="18"><use href="#ico-warn"/></svg></div><div class="notif-body"><div class="notif-title" style="font-size:.82rem">Essay Due in 6 Hours</div><div class="notif-sub" style="font-size:.74rem">History Essay Draft — today at 11:59 PM</div></div><div class="notif-unread-dot"></div></div>
+        <div class="notif-item" style="border-radius:10px;padding:11px 13px;opacity:.68"><div class="notif-avatar fi-green"><svg width="18" height="18"><use href="#ico-grade"/></svg></div><div class="notif-body"><div class="notif-title" style="font-size:.82rem">Grade Posted: Calculus</div><div class="notif-sub" style="font-size:.74rem">Midterm result: 91/100 — Excellent!</div></div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- taskss -->
+<div class="page" id="page-tasks"><div class="container task-manager-layout">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px">
+    <div><h1 class="heading" style="font-size:1.75rem;letter-spacing:-.03em">Task Manager</h1><p style="font-size:.83rem;color:var(--muted);margin-top:4px">Manage assignments and stay ahead of deadlines.</p></div>
+    <button class="btn btn-accent" onclick="toggleTaskForm()" style="display:flex;align-items:center;gap:7px"><svg width="13" height="13"><use href="#ico-plus"/></svg> Add Task</button>
+  </div>
+  <div class="task-form" id="taskForm" style="display:none">
+    <div class="task-form-title">New Task</div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label" for="taskTitle">Task Name *</label><input class="form-input" id="taskTitle" type="text" placeholder="e.g. Write essay intro…"><div id="taskTitle-hint" style="font-size:.7rem;color:var(--muted);margin-top:2px"></div></div>
+      <div class="form-group"><label class="form-label" for="taskSubject">Subject</label><select class="form-input" id="taskSubject"><option>MATH 201</option><option>HIST 110</option><option>PHYS 301</option><option>CS 401</option><option>SPAN 202</option></select></div>
+      <div class="form-group"><label class="form-label" for="taskDue">Due Date *</label><input class="form-input" id="taskDue" type="date"></div>
+      <div class="form-group" style="align-self:end"><button class="btn btn-accent" onclick="addTask()">Save Task</button></div>
+    </div>
+    <div id="formError" class="error-demo" style="display:none"><span class="error-icon"><svg width="16" height="16"><use href="#ico-err"/></svg></span><span class="error-text">Please fill in all required fields.</span></div>
+  </div>
+  <div class="task-toolbar">
+    <div class="search-bar"><svg width="15" height="15"><use href="#ico-search"/></svg><input type="text" id="taskSearch" placeholder="Search tasks…" oninput="filterTasks()"></div>
+    <div class="filter-tabs">
+      <div class="filter-tab active" onclick="setFilter('all',this)" tabindex="0">All</div>
+      <div class="filter-tab" onclick="setFilter('pending',this)" tabindex="0">Pending</div>
+      <div class="filter-tab" onclick="setFilter('done',this)" tabindex="0">Done</div>
+      <div class="filter-tab" onclick="setFilter('high',this)" tabindex="0">High Priority</div>
+    </div>
+  </div>
+  <div class="task-list-header"><span></span><span>Task</span><span>Subject</span><span>Due</span><span>Priority</span><span>Actions</span></div>
+  <div id="taskList"></div>
+  <div class="success-toast" id="toast"><div class="toast-check"><svg width="11" height="11"><use href="#ico-check"/></svg></div><span id="toastMsg">Done!</span></div>
+</div></div>
+
+<!-- schedule -->
+<div class="page" id="page-schedule"><div class="container schedule-page">
+  <div class="cal-nav">
+    <div><div class="label">Weekly View</div><div class="cal-title">March 2025</div></div>
+    <div style="display:flex;gap:7px"><button class="btn btn-outline btn-sm">← Prev</button><button class="btn btn-outline btn-sm" style="background:var(--cream)">Today</button><button class="btn btn-outline btn-sm">Next →</button></div>
+    <div class="view-switch"><div class="view-btn active" tabindex="0">Week</div><div class="view-btn" tabindex="0">Day</div><div class="view-btn" tabindex="0">Month</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 210px;gap:18px;align-items:start">
+    <div class="week-grid">
+      <div class="week-col-head"></div>
+      <div class="week-col-head"><div class="week-day">Mon</div><div class="week-date">3</div></div>
+      <div class="week-col-head"><div class="week-day">Tue</div><div class="week-date today">4</div></div>
+      <div class="week-col-head"><div class="week-day">Wed</div><div class="week-date">5</div></div>
+      <div class="week-col-head"><div class="week-day">Thu</div><div class="week-date">6</div></div>
+      <div class="week-col-head"><div class="week-day">Fri</div><div class="week-date">7</div></div>
+      <div class="time-col"><div class="time-slot"><span class="time-label">8 AM</span></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discete Math 01</div><div class="cal-event-time">8:00–9:30 · B202</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-blue" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Human Computer Interaction 01</div><div class="cal-event-time">8:00–9:30</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="time-col"><div class="time-slot"><span class="time-label">9 AM</span></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">CPPROG 04</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-orange" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Discreme Math 01</div><div class="cal-event-time">9:00–10:00</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Platform Technologies</div><div class="cal-event-time">9:00–10:30</div></div></div></div>
+      <div class="time-col"><div class="time-slot"><span class="time-label">10 AM</span></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Data Structure And Algorithms</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-green" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">OLLITE 01</div><div class="cal-event-time">10:00–11:00</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+      <div class="time-col"><div class="time-slot"><span class="time-label">11 AM</span></div></div>
+      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-purple" style="top:3px;height:56px" tabindex="0"><div class="cal-event-title">Study Group</div><div class="cal-event-time">11:00–12:30</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+      <div class="time-col"><div class="time-slot"><span class="time-label">2 PM</span></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com lab 216</div><div class="cal-event-time">14:00–16:00 · Lab 3</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div><div class="day-col"><div class="day-cell"></div></div>
+      <div class="day-col"><div class="day-cell"><div class="cal-event ev-gold" style="top:3px;height:132px" tabindex="0"><div class="cal-event-title">Com lab 216</div><div class="cal-event-time">14:00–16:00</div></div></div></div>
+      <div class="day-col"><div class="day-cell"></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="heading" style="font-size:.92rem;margin-bottom:12px">March 2025</div>
+        <div class="mini-calendar">
+          <div class="mini-day-head">S</div><div class="mini-day-head">M</div><div class="mini-day-head">T</div><div class="mini-day-head">W</div><div class="mini-day-head">T</div><div class="mini-day-head">F</div><div class="mini-day-head">S</div>
+          <div class="mini-day"></div><div class="mini-day">1</div><div class="mini-day has-event">2</div><div class="mini-day">3</div><div class="mini-day today">4</div><div class="mini-day has-event">5</div><div class="mini-day">6</div>
+          <div class="mini-day">7</div><div class="mini-day">8</div><div class="mini-day has-event">9</div><div class="mini-day">10</div><div class="mini-day">11</div><div class="mini-day">12</div><div class="mini-day">13</div>
+          <div class="mini-day">14</div><div class="mini-day has-event">15</div><div class="mini-day">16</div><div class="mini-day">17</div><div class="mini-day">18</div><div class="mini-day">19</div><div class="mini-day">20</div>
+          <div class="mini-day">21</div><div class="mini-day">22</div><div class="mini-day">23</div><div class="mini-day">24</div><div class="mini-day">25</div><div class="mini-day">26</div><div class="mini-day">27</div>
+          <div class="mini-day">28</div><div class="mini-day">29</div><div class="mini-day">30</div><div class="mini-day">31</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="heading" style="font-size:.92rem;margin-bottom:12px">Upcoming Exams</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:8px;background:rgba(212,86,42,0.1);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:var(--font-display);font-weight:800;color:var(--accent);flex-shrink:0">10</div><div><div style="font-size:.82rem;font-weight:600">Calculus Midterm</div><div style="font-size:.7rem;color:var(--muted)">Mar 10 · 2 PM</div></div></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:8px;background:rgba(42,125,212,0.1);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:var(--font-display);font-weight:800;color:var(--accent2);flex-shrink:0">15</div><div><div style="font-size:.82rem;font-weight:600">History Final</div><div style="font-size:.7rem;color:var(--muted)">Mar 15 · 9 AM</div></div></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:8px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:var(--font-display);font-weight:800;color:var(--gold);flex-shrink:0">22</div><div><div style="font-size:.82rem;font-weight:600">CS Project Demo</div><div style="font-size:.7rem;color:var(--muted)">Mar 22 · 3 PM</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- notifss-->
+<div class="page" id="page-notifications"><div class="container notif-page">
+  <div class="notif-toolbar">
+    <div style="display:flex;align-items:center;gap:10px"><h1 class="heading" style="font-size:1.75rem;letter-spacing:-.03em">Notifications</h1><div class="notif-count-badge" id="unreadCount">3 unread</div></div>
+    <div style="display:flex;gap:7px"><button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark all read</button><button class="btn btn-outline btn-sm" onclick="clearNotifs()">Clear all</button></div>
+  </div>
+  <div class="filter-tabs" style="margin-bottom:22px">
+    <div class="filter-tab active" onclick="setNotifFilter('all',this)" tabindex="0">All</div>
+    <div class="filter-tab" onclick="setNotifFilter('deadline',this)" tabindex="0">Deadlines</div>
+    <div class="filter-tab" onclick="setNotifFilter('grade',this)" tabindex="0">Grades</div>
+    <div class="filter-tab" onclick="setNotifFilter('reminder',this)" tabindex="0">Reminders</div>
+  </div>
+  <div id="notifList">
+    <div class="notif-item" tabindex="0" data-type="deadline"><div class="notif-avatar fi-orange"><svg width="18" height="18"><use href="#ico-warn"/></svg></div><div class="notif-body"><div class="notif-title">History Essay Due in 6 Hours</div><div class="notif-sub">Your HIST 110 essay draft is due tonight at 11:59 PM.</div><div class="notif-meta"><span class="chip chip-orange">Deadline</span><span class="notif-time">2 hours ago</span></div></div><div class="notif-actions"><div class="notif-unread-dot"></div><div class="notif-dismiss" onclick="dismissNotif(this)" tabindex="0">Dismiss</div></div></div>
+    <div class="notif-item" tabindex="0" data-type="grade"><div class="notif-avatar fi-green"><svg width="18" height="18"><use href="#ico-grade"/></svg></div><div class="notif-body"><div class="notif-title">Grade Posted: Calculus Midterm</div><div class="notif-sub">You scored 91/100 on the MATH 201 midterm. Top 10% of class!</div><div class="notif-meta"><span class="chip chip-green">Grade</span><span class="notif-time">5 hours ago</span></div></div><div class="notif-actions"><div class="notif-unread-dot"></div><div class="notif-dismiss" onclick="dismissNotif(this)" tabindex="0">Dismiss</div></div></div>
+    <div class="notif-item" tabindex="0" data-type="reminder"><div class="notif-avatar fi-blue"><svg width="18" height="18"><use href="#ico-clock"/></svg></div><div class="notif-body"><div class="notif-title">Study Reminder: Physics Exam</div><div class="notif-sub">Your Physics 301 exam is in 6 days. 72% of syllabus completed.</div><div class="notif-meta"><span class="chip chip-blue">Reminder</span><span class="notif-time">Yesterday</span></div></div><div class="notif-actions"><div class="notif-unread-dot"></div><div class="notif-dismiss" onclick="dismissNotif(this)" tabindex="0">Dismiss</div></div></div>
+    <div class="notif-item read" tabindex="0" data-type="deadline"><div class="notif-avatar" style="background:var(--cream);color:var(--muted)"><svg width="18" height="18"><use href="#ico-tasks"/></svg></div><div class="notif-body"><div class="notif-title">Assignment Submitted: CS 401</div><div class="notif-sub">CS Assignment 2 submitted. Grade expected by Mar 8.</div><div class="notif-meta"><span class="chip chip-gold">Info</span><span class="notif-time">2 days ago</span></div></div><div class="notif-actions"><div class="notif-dismiss" onclick="dismissNotif(this)" tabindex="0">Dismiss</div></div></div>
+    <div class="notif-item read" tabindex="0" data-type="reminder"><div class="notif-avatar" style="background:rgba(130,80,200,0.1);color:#8250c8"><svg width="18" height="18"><use href="#ico-people"/></svg></div><div class="notif-body"><div class="notif-title">Office Hours: Prof. Martinez</div><div class="notif-sub">History office hours today 3–5 PM, Faculty Building Room 202.</div><div class="notif-meta"><span class="chip chip-blue">Reminder</span><span class="notif-time">2 days ago</span></div></div><div class="notif-actions"><div class="notif-dismiss" onclick="dismissNotif(this)" tabindex="0">Dismiss</div></div></div>
+  </div>
+  <div class="empty-notif" id="emptyNotif" style="display:none"><div class="empty-icon">🔔</div><div class="empty-text">You're all caught up!</div></div>
+</div></div>
+
+<!-- Profile -->
+<div class="page" id="page-profile"><div class="container profile-page">
+  <div class="profile-hero">
+    <div class="avatar">AM</div>
+    <div style="flex:1"><div class="profile-name">Franco James</div><div class="profile-meta">Information technology · Year 3 · Student ID: CA202406639</div><div class="profile-badges"><span class="chip chip-green">Dean's List</span><span class="chip chip-blue">IT Major</span><span class="chip chip-gold">CSS SPARROWS</span></div></div>
+    <button class="btn btn-outline btn-sm">Edit Profile</button>
+  </div>
+  <div class="profile-grid">
+    <div>
+      <div class="card" style="margin-bottom:18px">
+        <div class="settings-title">Personal Information</div>
+        <label class="form-label" style="display:block;margin-bottom:5px">Full Name</label><input class="form-input-full" type="text" value="James Christian C. Franco">
+        <label class="form-label" style="display:block;margin-bottom:5px">Email Address</label><input class="form-input-full" type="email" value="jamesfranco139@gmail.com">
+        <label class="form-label" style="display:block;margin-bottom:5px">Student ID</label><input class="form-input-full" type="text" value="IT - CA202406639" readonly>
+        <label class="form-label" style="display:block;margin-bottom:5px">Program</label><input class="form-input-full" type="text" value="B.S. INFORMATION TECHNOLOGY">
+        <button class="btn btn-accent btn-sm" onclick="saveProfile()">Save Changes</button>
+        <div class="success-msg" id="profileSuccess"><span class="success-icon"><svg width="16" height="16"><use href="#ico-check"/></svg></span><span class="success-text">Profile saved!</span></div>
+      </div>
+      <div class="card">
+        <div class="settings-title">App Preferences</div>
+        <div class="settings-row"><div><div class="settings-label">Dark Mode</div><div class="settings-hint">Switch to dark theme</div></div><div class="toggle" id="darkToggle" onclick="toggleTheme()" role="switch" aria-checked="false" tabindex="0"></div></div>
+        <div class="settings-row"><div><div class="settings-label">Email Notifications</div><div class="settings-hint">Deadline reminders via email</div></div><div class="toggle on" onclick="this.classList.toggle('on')" tabindex="0"></div></div>
+        <div class="settings-row"><div><div class="settings-label">Push Notifications</div><div class="settings-hint">Get alerts in-browser</div></div><div class="toggle on" onclick="this.classList.toggle('on')" tabindex="0"></div></div>
+        <div class="settings-row"><div><div class="settings-label">Compact View</div><div class="settings-hint">Show more items on screen</div></div><div class="toggle" onclick="this.classList.toggle('on')" tabindex="0"></div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="card">
+        <div class="settings-title">This Semester</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:.8rem;font-weight:500">Overall Progress</span><span style="font-size:.8rem;font-family:var(--font-display);font-weight:700">74%</span></div><div class="progress-track"><div class="progress-fill" style="width:74%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:.8rem;font-weight:500">Attendance</span><span style="font-size:.8rem;font-family:var(--font-display);font-weight:700">96%</span></div><div class="progress-track"><div class="progress-fill green" style="width:96%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:.8rem;font-weight:500">Tasks Done</span><span style="font-size:.8rem;font-family:var(--font-display);font-weight:700">31/40</span></div><div class="progress-track"><div class="progress-fill blue" style="width:78%"></div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="settings-title">Achievements</div>
+        <div class="achievement-item"><div class="ach-icon fi-gold"><svg width="18" height="18"><use href="#ico-award"/></svg></div><div><div class="ach-title">Consistent Scholar</div><div class="ach-sub">10 weeks perfect attendance</div></div></div>
+        <div class="achievement-item"><div class="ach-icon fi-green"><svg width="18" height="18"><use href="#ico-target"/></svg></div><div><div class="ach-title">On a Roll</div><div class="ach-sub">7-day task streak</div></div></div>
+        <div class="achievement-item"><div class="ach-icon fi-blue"><svg width="18" height="18"><use href="#ico-book"/></svg></div><div><div class="ach-title">Deep Focus</div><div class="ach-sub">50+ study hours logged</div></div></div>
+        <div class="achievement-item"><div class="ach-icon fi-orange"><svg width="18" height="18"><use href="#ico-zap"/></svg></div><div><div class="ach-title">Early Bird</div><div class="ach-sub">5 assignments submitted early</div></div></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- help-->
+<div class="page" id="page-help"><div class="container help-page">
+  <div class="help-hero">
+    <div class="label" style="color:rgba(240,237,230,0.38);margin-bottom:9px">Support Center</div>
+    <div class="help-hero-title">How can we help?</div>
+    <div class="help-hero-sub">Search our FAQs or reach out. We're here to help.</div>
+    <div class="help-search"><svg width="16" height="16"><use href="#ico-search"/></svg><input type="text" placeholder="Search for answers…"><button class="btn btn-accent btn-sm" style="flex-shrink:0">Search</button></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:36px">
+    <div>
+      <div class="label" style="margin-bottom:18px">Frequently Asked Questions</div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How do I add a new task?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Go to Task Manager and click "+ Add Task". Fill in name, subject, and due date, then click Save.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How do I switch to dark mode?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Click "Dark Mode" at the bottom of the sidebar, or toggle it in Profile under App Preferences.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">Can I edit or delete a task?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Yes — each task row has edit and delete buttons. A confirmation prompt prevents accidental deletion.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">How are notifications managed?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Visit the Notifications page to dismiss, mark as read, or clear all. Filter by type using the tabs.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)" tabindex="0">Is PŌLARIS accessible?<div class="faq-toggle"><svg width="14" height="14"><use href="#ico-plus"/></svg></div></div><div class="faq-a">Yes — full ARIA labels, keyboard navigation, and WCAG 2.1 AA color contrast throughout.</div></div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:18px">Send Us a Message</div>
+      <div class="card">
+        <div class="form-group" style="margin-bottom:12px"><label class="form-label">Your Name *</label><input class="form-input" id="contactName" type="text" placeholder="Alex Mendoza" style="width:100%"></div>
+        <div class="form-group" style="margin-bottom:12px"><label class="form-label">Email *</label><input class="form-input" id="contactEmail" type="email" placeholder="you@university.edu" style="width:100%"></div>
+        <div class="form-group" style="margin-bottom:12px"><label class="form-label">Topic</label><select class="form-input" id="contactTopic" style="width:100%"><option>General Question</option><option>Task Manager Issue</option><option>Schedule/Calendar</option><option>Account & Profile</option><option>Bug Report</option></select></div>
+        <div class="form-group" style="margin-bottom:16px"><label class="form-label">Message *</label><textarea class="form-input" id="contactMsg" rows="4" placeholder="Describe your issue…" style="width:100%;resize:vertical;min-height:96px"></textarea></div>
+        <button class="btn btn-accent" onclick="submitContact()" style="width:100%;justify-content:center">Send Message</button>
+        <div class="error-demo" id="contactError" style="display:none"><span class="error-icon"><svg width="16" height="16"><use href="#ico-err"/></svg></span><span class="error-text">Please fill in all required fields.</span></div>
+        <div class="success-msg" id="contactSuccess"><span class="success-icon"><svg width="16" height="16"><use href="#ico-check"/></svg></span><span class="success-text">Message sent! We'll reply within 24 hours.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="label" style="margin-bottom:14px">Other Ways to Reach Us</div>
+  <div class="contact-grid">
+    <div class="contact-card" tabindex="0"><div class="contact-icon"><svg width="30" height="30"><use href="#ico-mail"/></svg></div><div class="contact-title">Email Support</div><div class="contact-desc"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87f4f2f7f7e8f5f3c7f7e8ebe6f5eef4a9e2e3f2">[email&#160;protected]</a><br>Responses within 24 hours</div></div>
+    <div class="contact-card" tabindex="0"><div class="contact-icon"><svg width="30" height="30"><use href="#ico-chat"/></svg></div><div class="contact-title">Live Chat</div><div class="contact-desc">Available Mon–Fri<br>9 AM – 6 PM local time</div></div>
