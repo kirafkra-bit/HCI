@@ -5,7 +5,7 @@
   --font-display:'Syne',sans-serif; --font-body:'DM Sans',sans-serif;
   --r:12px; --shadow:0 2px 24px rgba(10,10,15,0.07); --shadow-lg:0 8px 48px rgba(10,10,15,0.13);
   --transition:0.22s cubic-bezier(0.4,0,0.2,1);
-  --sb-bg:#1a1825; --sb-width:210px;
+  --sb-bg:#1a1825; --sb-width:280px;
   --sb-item-hover:rgba(255,255,255,0.07); --sb-item-active:rgba(255,255,255,0.12);
   --sb-text:rgba(255,255,255,0.55); --sb-text-active:#fff;
 }
